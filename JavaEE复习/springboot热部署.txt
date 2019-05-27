@@ -1,0 +1,30 @@
+Spring Boot 实现热部署：
+
+1、加入 spring-boot-devtools 依赖
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-devtools</artifactId>
+	<optional>true</optional>
+</dependency>
+
+2、加入插件
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<configuration>
+				<fork>true</fork>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
+
+1）、Java类改变，应用自动重启
+2）、配置文件改变，应用自动重启
+3）、html页面改变，不重启，会自动加载
+	spring.thymeleaf.cache=false
+
+注意：Idea 需要设置
+1）、Build -> Compiler -> Build project automatically(勾选)
+2）、ctrl + shift + alt + /，选择 Registry，勾上 Compiler autoMake allow when app running
